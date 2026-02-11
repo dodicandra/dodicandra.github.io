@@ -150,10 +150,6 @@ function renderContact() {
             <a href="mailto:${personal.email}">${personal.email}</a>
         </div>
         <div class="contact-item">
-            <span>📱</span>
-            <a href="tel:${personal.phone.replace(/-/g, '')}">${personal.phone}</a>
-        </div>
-        <div class="contact-item">
             <span>💼</span>
             <a href="${personal.linkedin}" target="_blank">LinkedIn Profile</a>
         </div>
