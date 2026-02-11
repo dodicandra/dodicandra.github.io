@@ -1,0 +1,157 @@
+{
+  "personal": {
+    "name": "Dodi Candra",
+    "title": "Senior Frontend & Mobile Developer",
+    "subtitle": "// MOBILE DEVELOPER",
+    "description": "Senior Frontend & Mobile Developer with 7+ years of experience in building exceptional web and mobile applications using ReactJS and React Native.",
+    "email": "dodicandra20@gmail.com",
+    "phone": "+628-228-435-1153",
+    "linkedin": "https://linkedin.com/in/dodi-candra-267867195",
+    "github": "https://github.com/dodicandra",
+    "profileImage": "assets/profile.jpg",
+    "floatingSkills": [
+      "React Native",
+      "ReactJS",
+      "TypeScript",
+      "Redux",
+      "Figma","React Query"
+    ]
+  },
+  "skills": [
+    {
+      "id": 1,
+      "category": "Mobile Development",
+      "items": [
+        "React Native (iOS/Android)",
+        "Redux & React Query",
+        "Native Modules Integration",
+        "App Store Deployment"
+      ]
+    },
+    {
+      "id": 2,
+      "category": "Web Development",
+      "items": [
+        "ReactJS & TypeScript",
+        "State Management (Redux, SWR)",
+        "Responsive Design",
+        "Modern UI/UX Solutions"
+      ]
+    },
+    {
+      "id": 3,
+      "category": "Support Tools",
+      "items": [
+        "Claude AI",
+        "ChatGPT",
+        "Figma Design",
+        "Github Copilot",
+        "Version Control (Git)"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "id": 1,
+      "position": "Senior Mobile Developer",
+      "company": "WEEKEND.INC",
+      "type": "Full Time",
+      "location": "South Jakarta",
+      "startDate": "March 2021",
+      "endDate": "Currently",
+      "responsibilities": [
+        "Building Apps (Android & iOS) from scratch",
+        "API Service Integration and optimization",
+        "Managing applications in Play Store and App Store",
+        "Leading mobile development team"
+      ]
+    },
+    {
+      "id": 2,
+      "position": "Mobile Developer",
+      "company": "Pertamina Training & Consulting",
+      "type": "Freelance",
+      "location": "Jakarta",
+      "startDate": "August 2021",
+      "endDate": "Currently",
+      "responsibilities": [
+        "Building new features and regular maintenance",
+        "API Service Integration",
+        "Research and implementation of new features",
+        "Cross-platform mobile development"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "PacificPlace Jakarta",
+      "description": "Comprehensive mobile app for PacificPlace Jakarta mall, featuring store directories, event updates, promotions, and indoor navigation.",
+      "icon": "https://play-lh.googleusercontent.com/xp0ie7P2r5BqsC1K_YcD7f_AwMCP8zfi9HqIMWhnppx88YbsDi5IL5cs4EAjKZUZPQU=w5120-h2880-rw",
+      "tags": ["React Native", "Redux", "React Query"],
+      "demoLink": "https://play.google.com/store/search?q=pacific+place+jakarta&c=apps&hl=en",
+      "githubLink": "#",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Allcare by Yakes Pertamina",
+      "description": "Mobile application for Yakes Pertamina's healthcare services, providing access to medical information, appointment booking, and health tracking features.",
+      "icon": "https://play-lh.googleusercontent.com/XVsJegFsWGveYorLCc4ZUOLJNfWomgGhlMEgwyXukKkXnhhth5oc7q4rvNgs3d65DU8=w5120-h2880-rw",
+      "tags": ["React Native", "TypeScript", "React Query"],
+      "demoLink": "https://play.google.com/store/search?q=allcare+yakes+pertamina&c=apps&hl=en",
+      "githubLink": "#",
+      "featured": true
+    },
+    {
+      "id": 7,
+      "title": "Allcare Landing Page",
+      "description": "Landing page for Allcare by Yakes Pertamina, showcasing healthcare services, features, and user testimonials to attract and inform potential users.",
+      "icon": "assets/allcare-page.png",
+      "tags": ["React Native", "TypeScript", "React Query"],
+      "demoLink": "https://www.allcare.id/",
+      "githubLink": "#",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "Wings Online",
+      "description": "E-commerce mobile application for Wings Group, featuring product browsing, secure checkout, order tracking, and personalized recommendations.",
+      "icon": "https://play-lh.googleusercontent.com/D03hk-UrHd3aDSsG6BFPvqyFSy8qQanDbD60pNf3PU-f0G9uU38BROc38l07hHPaRlA=w5120-h2880-rw",
+      "tags": ["React Native", "Native Integration", "Brown Field"],
+      "demoLink": "https://play.google.com/store/apps/details?id=id.code.wings&hl=en",
+      "githubLink": "#",
+      "featured": true
+    },
+    {
+      "id": 4,
+      "title": "Antavaya",
+      "description": "Travel booking mobile application offering flight, hotel, and tour package reservations with user-friendly interface and secure payment options.",
+      "icon": "https://play-lh.googleusercontent.com/q6sR_i4YxwyHLQS5vXrPWMYGtRbNGxED7-LGAOE_6-_nbfZGjxDMmya5ThgM61zr1aU=w5120-h2880-rw",
+      "tags": ["React Native", "React Query", "Redux"],
+      "demoLink": "https://play.google.com/store/search?q=antavaya&c=apps&hl=en",
+      "githubLink": "#",
+      "featured": false
+    },
+    {
+      "id": 41,
+      "title": "Tokoku",
+      "description": "E-Commare App by Charoen Pokphand, featuring product browsing, secure checkout, order tracking, and personalized recommendations.",
+      "icon": "https://play-lh.googleusercontent.com/BpmWJlDscm_V1Hja3z_w-KP7pBwGY-MPTkxIZdUYY_rCT35kTKt3TMCx9sriSdE2Lrg=w5120-h2880-rw",
+      "tags": ["React Native", "React Query", "Redux"],
+      "demoLink": "https://play.google.com/store/apps/details?id=com.tokoku&hl=en",
+      "githubLink": "#",
+      "featured": false
+    },
+    {
+      "id": 42,
+      "title": "PrimaFreshmart",
+      "description": "E-Commare App by Charoen Pokphand, featuring product browsing, secure checkout, order tracking, and personalized recommendations.",
+      "icon": "https://play-lh.googleusercontent.com/kRngeD_CqDFCFRIwVqOPUY6M77qv3lKSdh-m69eKe_4Vx1dDm9HKfjkeIe0wiDNqJJhw=w5120-h2880-rw",
+      "tags": ["React Native", "React Query", "Redux"],
+      "demoLink": "https://play.google.com/store/search?q=primafreshmart&c=apps&hl=en",
+      "githubLink": "#",
+      "featured": false
+    }
+  ]
+}
