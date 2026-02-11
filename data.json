@@ -9,13 +9,7 @@
     "linkedin": "https://linkedin.com/in/dodi-candra-267867195",
     "github": "https://github.com/dodicandra",
     "profileImage": "assets/profile.jpg",
-    "floatingSkills": [
-      "React Native",
-      "ReactJS",
-      "TypeScript",
-      "Redux",
-      "Figma","React Query"
-    ]
+    "floatingSkills": ["React Native", "ReactJS", "TypeScript", "Redux", "Figma", "React Query"]
   },
   "skills": [
     {
@@ -31,23 +25,12 @@
     {
       "id": 2,
       "category": "Web Development",
-      "items": [
-        "ReactJS & TypeScript",
-        "State Management (Redux, SWR)",
-        "Responsive Design",
-        "Modern UI/UX Solutions"
-      ]
+      "items": ["ReactJS & TypeScript", "State Management (Redux, SWR)", "Responsive Design", "Modern UI/UX Solutions"]
     },
     {
       "id": 3,
       "category": "Support Tools",
-      "items": [
-        "Claude AI",
-        "ChatGPT",
-        "Figma Design",
-        "Github Copilot",
-        "Version Control (Git)"
-      ]
+      "items": ["Claude AI", "ChatGPT", "Figma Design", "Github Copilot", "Version Control (Git)"]
     }
   ],
   "experience": [
