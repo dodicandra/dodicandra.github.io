@@ -17,9 +17,12 @@
       "category": "Mobile Development",
       "items": [
         "React Native (iOS/Android)",
-        "Redux & React Query",
+        "Redux,Zustand,React Query",
         "Native Modules Integration",
-        "App Store Deployment"
+        "Firebase Services (Authentication, Firestore, Claud Messaging)",
+        "OTA Updates (Revopush, EAS Update)",
+        "App Store Deployment",
+        "And other advanced skills related to mobile development"
       ]
     },
     {
