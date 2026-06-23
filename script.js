@@ -49,26 +49,25 @@ function renderFloatingElements() {
 
   if (!floatingContainer || !personal.floatingSkills) return;
 
-  // Create floating items with staggered animations
+  // Posisi orbital tetap di luar batas foto — tidak menimpa gambar
+  const orbitalPositions = [
+    { top: "-14%", right: "32%" },   // atas tengah
+    { top: "8%",   right: "-30%" },  // kanan atas
+    { top: "55%",  right: "-32%" },  // kanan bawah
+    { top: "105%", right: "28%" },   // bawah tengah
+    { top: "92%",  right: "82%" },   // bawah kiri
+    { top: "5%",   right: "92%" },   // kiri atas
+  ];
+
   floatingContainer.innerHTML = personal.floatingSkills
     .map((skill, index) => {
-      // create random positions for floating elements baseon length of floatingSkills
-      const positions = Array.from({ length: personal.floatingSkills.length }, () => ({
-        top: `${Math.random() * 80 + 10}%`,
-        // left: `${Math.random() * 80 + 10}%`
-        right: `${Math.random() * 80 + 10}%`,
-      }));
-      const positionsRandom = positions.sort(() => Math.random() - 0.5);
-
-      const position = positionsRandom[index] || positionsRandom[0];
-      const animationDelay = index * 2; // 0s, 2s, 4s
+      const position = orbitalPositions[index % orbitalPositions.length];
+      const animationDelay = index * 1.5;
 
       return `
-            <div class="float-item" 
-                 style="top: ${position.top || "auto"}; 
-                        bottom: ${position.bottom || "auto"}; 
-                        left: ${position.left || "auto"}; 
-                        right: ${position.right || "auto"};
+            <div class="float-item"
+                 style="top: ${position.top};
+                        right: ${position.right};
                         animation-delay: ${animationDelay}s;">
                 ${skill}
             </div>
