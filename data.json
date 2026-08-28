@@ -39,31 +39,109 @@
   "experience": [
     {
       "id": 1,
-      "position": "Senior Mobile Developer",
       "company": "WEEKEND.INC",
+      "monogram": "W",
       "type": "Full Time",
-      "location": "South Jakarta",
       "startDate": "March 2021",
       "endDate": "Currently",
-      "responsibilities": [
-        "Building Apps (Android & iOS) from scratch",
-        "API Service Integration and optimization",
-        "Managing applications in Play Store and App Store"
+      "totalDuration": "5 yrs 6 mos",
+      "roles": [
+        {
+          "id": "wk-pp",
+          "position": "Mobile Developer PacificPlace Jakarta",
+          "icon": "assets/pp.webp",
+          "startDate": "Nov 2024",
+          "endDate": "Present",
+          "duration": "1 yr 10 mos",
+          "location": "Indonesia",
+          "workMode": "Remote",
+          "skills": ["React Native", "TypeScript", "React Query"]
+        },
+        {
+          "id": "wk-wings",
+          "position": "Mobile Developer Wings Apps",
+          "icon": "assets/wings-m.webp",
+          "startDate": "May 2023",
+          "endDate": "Present",
+          "duration": "3 yrs 4 mos",
+          "location": "South Jakarta, Jakarta, Indonesia",
+          "workMode": "Remote",
+          "skills": ["React Native", "TypeScript", "Native Integration", "Brown Field"]
+        },
+        {
+          "id": "wk-tokoku",
+          "position": "Mobile Developer TokoKu",
+          "icon": "assets/tokoku-m.webp",
+          "startDate": "Nov 2021",
+          "endDate": "Present",
+          "duration": "4 yrs 10 mos",
+          "location": "South Jakarta, Jakarta, Indonesia",
+          "workMode": "Remote",
+          "skills": ["React Native", "React Query", "Redux", "TypeScript"]
+        },
+        {
+          "id": "wk-pfm",
+          "position": "Mobile Developer PrimaFreshMart",
+          "icon": "assets/pfm-m.webp",
+          "startDate": "Jul 2021",
+          "endDate": "Present",
+          "duration": "5 yrs 2 mos",
+          "location": "South Jakarta, Jakarta, Indonesia",
+          "workMode": "Remote",
+          "skills": ["React Native", "React Redux"]
+        },
+        {
+          "id": "wk-antavaya",
+          "position": "Mobile Developer Antavaya",
+          "icon": "assets/antavaya-m.webp",
+          "startDate": "Dec 2021",
+          "endDate": "Jul 2024",
+          "duration": "2 yrs 8 mos",
+          "location": "South Jakarta, Jakarta, Indonesia",
+          "workMode": "Remote",
+          "skills": ["React Native", "React Redux", "React Query"]
+        },
+        {
+          "id": "wk-general",
+          "position": "Mobile Developer",
+          "startDate": "Mar 2021",
+          "endDate": "Jul 2024",
+          "duration": "3 yrs 5 mos",
+          "location": "South Jakarta, Jakarta, Indonesia",
+          "responsibilities": [
+            "Building Apps (Android & iOS) from scratch",
+            "API Service Integration and optimization",
+            "Managing applications in Play Store and App Store"
+          ]
+        }
       ]
     },
     {
       "id": 2,
-      "position": "Mobile Developer",
       "company": "Pertamina Training & Consulting",
+      "monogram": "PTC",
       "type": "Freelance",
-      "location": "Jakarta",
       "startDate": "August 2021",
       "endDate": "January 2026",
-      "responsibilities": [
-        "Building new features and regular maintenance",
-        "API Service Integration",
-        "Research and implementation of new features",
-        "Cross-platform mobile development"
+      "totalDuration": "4 yrs 6 mos",
+      "roles": [
+        {
+          "id": "ptc-allcare",
+          "position": "Mobile Developer — Allcare by Yakes Pertamina",
+          "icon": "assets/allcare-m.webp",
+          "startDate": "Aug 2021",
+          "endDate": "Jan 2026",
+          "duration": "4 yrs 6 mos",
+          "location": "Jakarta",
+          "workMode": "Remote",
+          "skills": ["React Native", "TypeScript", "React Query"],
+          "responsibilities": [
+            "Building new features and regular maintenance",
+            "API Service Integration",
+            "Research and implementation of new features",
+            "Cross-platform mobile development"
+          ]
+        }
       ]
     }
   ],

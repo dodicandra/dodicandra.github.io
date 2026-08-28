@@ -422,7 +422,7 @@ section {
   margin: 0 auto;
 }
 
-.timeline-item {
+.experience-group {
   background: var(--glass-fill);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -430,59 +430,167 @@ section {
   border-radius: 20px;
   margin-bottom: 24px;
   border: 1px solid var(--glass-border);
-  border-left: 3px solid var(--accent-violet);
   transition: all 0.35s ease;
 }
 
-.timeline-item:hover {
+.experience-group:hover {
   background: var(--glass-fill-hover);
   border-color: var(--glass-border-hv);
-  border-left-color: var(--accent-cyan);
-  transform: translateX(8px);
   box-shadow: 0 12px 36px rgba(124, 58, 237, 0.15);
 }
 
-.timeline-item h3 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--accent-cyan);
-  margin-bottom: 8px;
+/* Company header */
+
+.company-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--glass-border);
 }
 
-.timeline-item .company {
+.company-monogram {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.18), rgba(103, 232, 249, 0.12));
+  border: 1px solid var(--glass-border);
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--accent-violet);
+}
+
+.company-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 4px;
-  font-weight: 500;
 }
 
-.timeline-item .duration {
-  color: var(--text-muted);
-  font-size: 13px;
-  margin-bottom: 16px;
+.company-meta {
   font-family: 'Space Mono', monospace;
-}
-
-.timeline-item ul {
-  list-style: none;
-}
-
-.timeline-item ul li {
-  padding: 5px 0;
+  font-size: 13px;
   color: var(--text-muted);
-  position: relative;
-  padding-left: 22px;
-  font-size: 15px;
 }
 
-.timeline-item ul li::before {
+/* Role timeline */
+
+.role-list {
+  list-style: none;
+  position: relative;
+  padding: 24px 0 0 44px;
+}
+
+.role-list::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 32px;
+  bottom: 12px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent-violet), rgba(167, 139, 250, 0.08));
+}
+
+/* Satu role saja: garis timeline tidak menghubungkan apa pun */
+.role-list:has(> .role-item:only-child)::before {
+  display: none;
+}
+
+.role-item {
+  position: relative;
+  padding-bottom: 28px;
+}
+
+.role-item:last-child {
+  padding-bottom: 0;
+}
+
+.role-marker {
+  position: absolute;
+  left: -44px;
+  top: 2px;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--glass-fill);
+  border: 1px solid var(--glass-border);
+}
+
+.role-marker img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Aset app berupa screenshot portrait — crop dari atas agar area brand terlihat */
+  object-position: top center;
+}
+
+.role-marker.is-dot {
+  left: -34px;
+  top: 8px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent-violet);
+  box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.12);
+}
+
+.role-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  margin-bottom: 6px;
+}
+
+.role-duration {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.role-location {
+  font-size: 13px;
+  color: var(--text-muted);
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+.role-tasks {
+  list-style: none;
+  margin-top: 12px;
+}
+
+.role-tasks li {
+  padding: 4px 0;
+  padding-left: 20px;
+  position: relative;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.role-tasks li::before {
   content: '•';
   position: absolute;
   left: 0;
   color: var(--accent-violet);
   font-size: 18px;
   line-height: 1.4;
+}
+
+.role-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
 }
 
 /* ─── Projects ───────────────────────────────────────────────── */
@@ -690,7 +798,7 @@ footer p + p {
   }
 
   .skill-card,
-  .timeline-item,
+  .experience-group,
   .project-card,
   .contact-item,
   .btn {
@@ -736,6 +844,28 @@ footer p + p {
   .projects-grid,
   .skills-grid {
     grid-template-columns: 1fr;
+  }
+
+  .experience-group {
+    padding: 24px 20px;
+  }
+
+  .role-list {
+    padding-left: 36px;
+  }
+
+  .role-list::before {
+    left: 13px;
+  }
+
+  .role-marker {
+    left: -36px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .role-marker.is-dot {
+    left: -28px;
   }
 
   .float-item {

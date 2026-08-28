@@ -97,6 +97,36 @@ function renderSkills() {
     .join("");
 }
 
+// Render a single role inside a company timeline
+function renderRole(role) {
+  const marker = role.icon
+    ? `<div class="role-marker"><img src="${role.icon}" alt="${role.position}" onerror="this.style.display='none'"></div>`
+    : `<div class="role-marker is-dot"></div>`;
+
+  const place = [role.location, role.workMode].filter(Boolean).join(" · ");
+
+  const tasks = role.responsibilities?.length
+    ? `<ul class="role-tasks">${role.responsibilities.map((task) => `<li>${task}</li>`).join("")}</ul>`
+    : "";
+
+  const skills = role.skills?.length
+    ? `<div class="role-skills">${role.skills.map((skill) => `<span class="tag">${skill}</span>`).join("")}</div>`
+    : "";
+
+  return `
+        <li class="role-item">
+            ${marker}
+            <div class="role-body">
+                <h4 class="role-title">${role.position}</h4>
+                <p class="role-duration">${role.startDate} – ${role.endDate} · ${role.duration}</p>
+                ${place ? `<p class="role-location">${place}</p>` : ""}
+                ${tasks}
+                ${skills}
+            </div>
+        </li>
+    `;
+}
+
 // Render Experience Section
 function renderExperience() {
   const { experience } = portfolioData;
@@ -107,12 +137,16 @@ function renderExperience() {
   timeline.innerHTML = experience
     .map(
       (exp) => `
-        <div class="timeline-item">
-            <h3>${exp.position}</h3>
-            <p class="company">${exp.company} - ${exp.type}</p>
-            <p class="duration">${exp.startDate} - ${exp.endDate} | ${exp.location}</p>
-            <ul>
-                ${exp.responsibilities.map((resp) => `<li>${resp}</li>`).join("")}
+        <div class="experience-group">
+            <div class="company-header">
+                <div class="company-monogram">${exp.monogram}</div>
+                <div class="company-info">
+                    <h3 class="company-name">${exp.company}</h3>
+                    <p class="company-meta">${exp.type} · ${exp.startDate} – ${exp.endDate} · ${exp.totalDuration}</p>
+                </div>
+            </div>
+            <ul class="role-list">
+                ${exp.roles.map(renderRole).join("")}
             </ul>
         </div>
     `,
@@ -204,7 +238,7 @@ function initializeAnimations() {
     });
   }, observerOptions);
 
-  document.querySelectorAll(".skill-card, .timeline-item, .project-card").forEach((el) => {
+  document.querySelectorAll(".skill-card, .experience-group, .project-card").forEach((el) => {
     el.style.opacity = "0";
     el.style.transform = "translateY(30px)";
     el.style.transition = "all 0.6s ease-out";
