@@ -51,12 +51,12 @@ function renderFloatingElements() {
 
   // Posisi orbital tetap di luar batas foto — tidak menimpa gambar
   const orbitalPositions = [
-    { top: "-14%", right: "32%" },   // atas tengah
-    { top: "8%",   right: "-30%" },  // kanan atas
-    { top: "55%",  right: "-32%" },  // kanan bawah
-    { top: "105%", right: "28%" },   // bawah tengah
-    { top: "92%",  right: "82%" },   // bawah kiri
-    { top: "5%",   right: "92%" },   // kiri atas
+    { top: "-14%", right: "32%" }, // atas tengah
+    { top: "8%", right: "-30%" }, // kanan atas
+    { top: "55%", right: "-32%" }, // kanan bawah
+    { top: "105%", right: "28%" }, // bawah tengah
+    { top: "92%", right: "82%" }, // bawah kiri
+    { top: "5%", right: "92%" }, // kiri atas
   ];
 
   floatingContainer.innerHTML = personal.floatingSkills
@@ -97,6 +97,101 @@ function renderSkills() {
     .join("");
 }
 
+// --- Date helpers -----------------------------------------------------------
+// Dates in data.json use the "DD MM YYYY" format, or "present" for ongoing work.
+// Durations are never stored — they are always derived from today's date.
+
+const PRESENT = "present";
+const MONTHS_SHORT = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const MONTHS_PER_YEAR = 12;
+const DATE_PATTERN = /^(\d{2}) (\d{2}) (\d{4})$/;
+
+// Parse "DD MM YYYY" into { year, month } (month is 1-12).
+// Returns null for ongoing work, or undefined when the value cannot be parsed.
+function parseWorkDate(value) {
+  if (value === PRESENT) return null;
+
+  const match = typeof value === "string" ? value.match(DATE_PATTERN) : null;
+
+  if (!match) {
+    console.error(`Invalid work date, expected "DD MM YYYY" or "${PRESENT}":`, value);
+    return undefined;
+  }
+
+  const month = Number(match[2]);
+
+  if (month < 1 || month > MONTHS_PER_YEAR) {
+    console.error("Invalid month in work date:", value);
+    return undefined;
+  }
+
+  return { year: Number(match[3]), month };
+}
+
+// Today, in the same shape parseWorkDate returns.
+function currentMonth() {
+  const now = new Date();
+  return { year: now.getFullYear(), month: now.getMonth() + 1 };
+}
+
+// { year: 2024, month: 11 } -> "Nov 2024". Ongoing work renders as "Present".
+function formatMonthYear(parsed) {
+  if (parsed === null) return "Present";
+  if (!parsed) return "";
+
+  return `${MONTHS_SHORT[parsed.month - 1]} ${parsed.year}`;
+}
+
+// Absolute month index, so date comparisons and arithmetic stay timezone-free.
+function toMonthIndex(parsed) {
+  return parsed.year * MONTHS_PER_YEAR + parsed.month;
+}
+
+function pluralize(count, unit) {
+  return `${count} ${unit}${count > 1 ? "s" : ""}`;
+}
+
+// LinkedIn-style inclusive duration: both the first and last month are counted.
+function formatDuration(start, end) {
+  if (!start) return "";
+
+  const resolvedEnd = end === null ? currentMonth() : end;
+  if (!resolvedEnd) return "";
+
+  const months = Math.max(1, toMonthIndex(resolvedEnd) - toMonthIndex(start) + 1);
+  const years = Math.floor(months / MONTHS_PER_YEAR);
+  const remainingMonths = months % MONTHS_PER_YEAR;
+
+  return [years > 0 ? pluralize(years, "yr") : "", remainingMonths > 0 ? pluralize(remainingMonths, "mo") : ""]
+    .filter(Boolean)
+    .join(" ");
+}
+
+// "Nov 2024 – Present · 1 yr 10 mos", or "" when either date is unusable.
+function formatDateRange(startDate, endDate) {
+  const start = parseWorkDate(startDate);
+  const end = parseWorkDate(endDate);
+
+  if (!start || end === undefined) return "";
+
+  return [`${formatMonthYear(start)} – ${formatMonthYear(end)}`, formatDuration(start, end)]
+    .filter(Boolean)
+    .join(" · ");
+}
+
+// Newest first: ongoing roles lead, then by end date, then by start date.
+// Unparseable dates sink to the bottom rather than scrambling the order.
+function sortRolesByRecency(roles) {
+  const rank = (value) => {
+    const parsed = parseWorkDate(value);
+    if (parsed === null) return Infinity;
+    if (!parsed) return -Infinity;
+    return toMonthIndex(parsed);
+  };
+
+  return [...roles].sort((a, b) => rank(b.endDate) - rank(a.endDate) || rank(b.startDate) - rank(a.startDate));
+}
+
 // Render a single role inside a company timeline
 function renderRole(role) {
   const marker = role.icon
@@ -104,6 +199,8 @@ function renderRole(role) {
     : `<div class="role-marker is-dot"></div>`;
 
   const place = [role.location, role.workMode].filter(Boolean).join(" · ");
+
+  const timing = formatDateRange(role.startDate, role.endDate);
 
   const tasks = role.responsibilities?.length
     ? `<ul class="role-tasks">${role.responsibilities.map((task) => `<li>${task}</li>`).join("")}</ul>`
@@ -118,7 +215,7 @@ function renderRole(role) {
             ${marker}
             <div class="role-body">
                 <h4 class="role-title">${role.position}</h4>
-                <p class="role-duration">${role.startDate} – ${role.endDate} · ${role.duration}</p>
+                ${timing ? `<p class="role-duration">${timing}</p>` : ""}
                 ${place ? `<p class="role-location">${place}</p>` : ""}
                 ${tasks}
                 ${skills}
@@ -142,11 +239,11 @@ function renderExperience() {
                 <div class="company-monogram">${exp.monogram}</div>
                 <div class="company-info">
                     <h3 class="company-name">${exp.company}</h3>
-                    <p class="company-meta">${exp.type} · ${exp.startDate} – ${exp.endDate} · ${exp.totalDuration}</p>
+                    <p class="company-meta">${[exp.type, formatDateRange(exp.startDate, exp.endDate)].filter(Boolean).join(" · ")}</p>
                 </div>
             </div>
             <ul class="role-list">
-                ${exp.roles.map(renderRole).join("")}
+                ${sortRolesByRecency(exp.roles).map(renderRole).join("")}
             </ul>
         </div>
     `,
